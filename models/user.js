@@ -25,10 +25,7 @@ class User extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.User.belongsTo(db.Result, {
-            foreignKey: "resultId",
-            targetKey: "id",
-        });
+        db.User.belongsTo(db.Result);
     }
 }
 

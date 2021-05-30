@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "test": "jest --detectOpenHandles",
+        "test": "NODE_ENV=test ENV=3001 jest",
         "start": "nodemon ./bin/www"
     },
     "dependencies": {
@@ -14,7 +14,7 @@
         "ejs": "^3.1.6",
         "express": "~4.16.1",
         "http-errors": "~1.6.3",
-        "jade": "~1.11.0",
+        "jade": "^1.9.2",
         "moment": "^2.29.1",
         "morgan": "~1.9.1",
         "mysql2": "^2.2.5",
