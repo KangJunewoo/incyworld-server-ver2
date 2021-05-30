@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-class Result extends Sequelize.Model {
+module.exports = class Result extends Sequelize.Model {
     static init(sequelize) {
         return super.init(
             {
@@ -38,6 +38,4 @@ class Result extends Sequelize.Model {
             sourceKey: "id",
         });
     }
-}
-
-module.exports = Result;
+};

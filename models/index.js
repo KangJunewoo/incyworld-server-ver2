@@ -20,7 +20,8 @@ db.Result = Result;
 User.init(sequelize);
 Result.init(sequelize);
 
-User.associate(db);
+// 이게 맞는건진 모르겠네!!
+// User.associate(db);
 Result.associate(db);
 
 module.exports = db;

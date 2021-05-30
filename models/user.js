@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-class User extends Sequelize.Model {
+module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
         return super.init(
             {
@@ -24,9 +24,7 @@ class User extends Sequelize.Model {
         );
     }
 
-    static associate(db) {
-        db.User.belongsTo(db.Result);
-    }
-}
-
-module.exports = User;
+    // static associate(db) {
+    //     db.User.belongsTo(db.Result);
+    // }
+};
