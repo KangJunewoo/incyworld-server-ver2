@@ -31,6 +31,13 @@ class Result extends Sequelize.Model {
             },
         );
     }
+
+    static associate(db) {
+        db.Result.hasMany(db.User, {
+            foreignKey: "resultId",
+            sourceKey: "id",
+        });
+    }
 }
 
 module.exports = Result;

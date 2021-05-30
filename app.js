@@ -10,7 +10,7 @@ const schedule = require("node-schedule");
 const daily = require("./modules/daily");
 
 sequelize
-    .sync({ alter: false })
+    .sync({ alter: true })
     .then(() => {
         console.log("DB 연결 성공");
     })
