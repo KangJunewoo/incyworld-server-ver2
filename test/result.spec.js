@@ -119,4 +119,20 @@ describe("getResult", () => {
             util.fail(statusCode.INVALID_VALUE, resMessage.INVALID_VALUE),
         );
     });
+
+    test("Result 조회 중 에러가 발생했을 경우 500 json 리턴", async () => {
+        Result.findOne.mockReturnValue(Promise.reject());
+
+        const req = {
+            params: {
+                levelNum: 1,
+            },
+        };
+
+        await getResult(req, res);
+        expect(res.status).toBeCalledWith(statusCode.INTERNAL_SERVER_ERROR);
+        expect(res.send).toBeCalledWith(
+            util.fail(statusCode.INTERNAL_SERVER_ERROR, resMessage.DB_ERROR),
+        );
+    });
 });

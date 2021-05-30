@@ -16,11 +16,89 @@ const res = {
 const next = jest.fn();
 
 describe("createUser", () => {
-    test("birthYear, answers가 모두 정상적인 경우 다음 컨트롤러를 호출해야 함.", async () => {
+    test("9~10개 맞춘 경우 다음 컨트롤러를 호출해야 함.", async () => {
         const req = {
             body: {
                 birthYear: 1998,
-                answers: [1, 2, 3, 2, 1, 2, 3, 2, 1, 2],
+                answers: [1, 4, 2, 3, 2, 2, 3, 4, 1, 4],
+            },
+        };
+        Result.findOne.mockReturnValue(
+            Promise.resolve({
+                addUser(user) {
+                    return Promise.resolve(true);
+                },
+            }),
+        ); // Result.findOne으로 찾아낸 result는 addUser를 불러낼 수 있어야 함.
+
+        User.create.mockReturnValue({
+            birthYear: expect.anything(Number),
+            score: expect.anything(Number),
+        }); // 유저를 리턴할 수 있어야 함.
+
+        await createUser(req, res, next);
+        expect(req).toHaveProperty("user"); // req에 user와 levelNum이 달리고
+        expect(req).toHaveProperty("levelNum");
+        expect(next).toBeCalled(); // 무사히 next까지 가기를.
+    });
+
+    test("6~8개 맞춘 경우 다음 컨트롤러를 호출해야 함.", async () => {
+        const req = {
+            body: {
+                birthYear: 1998,
+                answers: [1, 4, 2, 3, 2, 2, 3, 1, 4, 1],
+            },
+        };
+        Result.findOne.mockReturnValue(
+            Promise.resolve({
+                addUser(user) {
+                    return Promise.resolve(true);
+                },
+            }),
+        ); // Result.findOne으로 찾아낸 result는 addUser를 불러낼 수 있어야 함.
+
+        User.create.mockReturnValue({
+            birthYear: expect.anything(Number),
+            score: expect.anything(Number),
+        }); // 유저를 리턴할 수 있어야 함.
+
+        await createUser(req, res, next);
+        expect(req).toHaveProperty("user"); // req에 user와 levelNum이 달리고
+        expect(req).toHaveProperty("levelNum");
+        expect(next).toBeCalled(); // 무사히 next까지 가기를.
+    });
+
+    test("3~5개 맞춘 경우 다음 컨트롤러를 호출해야 함.", async () => {
+        const req = {
+            body: {
+                birthYear: 1998,
+                answers: [1, 4, 2, 1, 1, 1, 1, 1, 1, 1],
+            },
+        };
+        Result.findOne.mockReturnValue(
+            Promise.resolve({
+                addUser(user) {
+                    return Promise.resolve(true);
+                },
+            }),
+        ); // Result.findOne으로 찾아낸 result는 addUser를 불러낼 수 있어야 함.
+
+        User.create.mockReturnValue({
+            birthYear: expect.anything(Number),
+            score: expect.anything(Number),
+        }); // 유저를 리턴할 수 있어야 함.
+
+        await createUser(req, res, next);
+        expect(req).toHaveProperty("user"); // req에 user와 levelNum이 달리고
+        expect(req).toHaveProperty("levelNum");
+        expect(next).toBeCalled(); // 무사히 next까지 가기를.
+    });
+
+    test("2개 이하로 맞춘 경우 다음 컨트롤러를 호출해야 함.", async () => {
+        const req = {
+            body: {
+                birthYear: 1998,
+                answers: [2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
             },
         };
         Result.findOne.mockReturnValue(
@@ -165,6 +243,30 @@ describe("getScoreRate", () => {
         expect(res.status).toBeCalledWith(statusCode.OK);
         expect(res.send).toBeCalledWith(
             util.success(statusCode.OK, resMessage.SUCCESS, expectedData),
+        );
+    });
+
+    test("req.user가 존재하지 않을 경우 400 json을 리턴해야 함", async () => {
+        const req = {
+            user: undefined,
+            levelNum: 3,
+        };
+        await getScoreRate(req, res);
+        expect(res.status).toBeCalledWith(statusCode.BAD_REQUEST);
+        expect(res.send).toBeCalledWith(
+            util.fail(statusCode.BAD_REQUEST, resMessage.NULL_VALUE),
+        );
+    });
+
+    test("req.levelNum이 존재하지 않을 경우 400 json을 리턴해야 함", async () => {
+        const req = {
+            user: { score: 8, birthYear: 1998 },
+            levelNum: undefined,
+        };
+        await getScoreRate(req, res);
+        expect(res.status).toBeCalledWith(statusCode.BAD_REQUEST);
+        expect(res.send).toBeCalledWith(
+            util.fail(statusCode.BAD_REQUEST, resMessage.NULL_VALUE),
         );
     });
 

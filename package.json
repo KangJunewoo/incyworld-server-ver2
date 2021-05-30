@@ -3,9 +3,9 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "test": "NODE_ENV=test ENV=3001 jest --verbose",
-        "start": "nodemon ./bin/www",
-        "coverage": "NODE_ENV=test ENV=3001 jest --coverage"
+        "test": "DB=test PORT=3001 jest --verbose",
+        "coverage": "DB=test PORT=3001 jest --coverage",
+        "start": "DB=development PORT=3000 nodemon ./bin/www"
     },
     "dependencies": {
         "@types/sequelize": "^4.28.9",

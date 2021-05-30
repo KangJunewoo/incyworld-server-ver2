@@ -59,7 +59,7 @@ const user = {
      */
     getScoreRate: async (req, res) => {
         try {
-            if (req.user == undefined) {
+            if (req.user == undefined || req.levelNum == undefined) {
                 return res
                     .status(statusCode.BAD_REQUEST)
                     .send(
