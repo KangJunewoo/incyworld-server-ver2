@@ -37,7 +37,7 @@ const result = {
                     );
             }
             return res
-                .status(statusCode.BAD_REQUEST)
+                .status(statusCode.INVALID_VALUE)
                 .send(
                     util.fail(
                         statusCode.INVALID_VALUE,
