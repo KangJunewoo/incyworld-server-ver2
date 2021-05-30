@@ -1,32 +1,36 @@
-const Result = (sequelize, DataTypes) => {
-  return sequelize.define(
-    "Result",
-    {
-      //모델의 Attributes (Column)을 정의하는곳
-      imageUrl: {
-        type: DataTypes.STRING(100),
-        allowNull: true,
-      },
-      videoUrl:{
-        type:DataTypes.STRING(100),
-        allowNull: false,
-      },
-      title:{
-        type: DataTypes.STRING(100),
-        allowNull:false,
-      },
-      guide: {
-        type: DataTypes.TEXT(),
-        allowNull: false,
-      }
+const Sequelize = require("sequelize");
 
-    },
-    {
-      //모델의 옵션들을 지정하는곳
-      freezeTableName: true,
-      timestamps: false,
+class Result extends Sequelize.Model {
+    static init(sequelize) {
+        return super.init(
+            {
+                imageUrl: {
+                    type: Sequelize.STRING,
+                    allowNull: false,
+                },
+                videoUrl: {
+                    type: Sequelize.STRING,
+                    allowNull: false,
+                },
+                title: {
+                    type: Sequelize.STRING,
+                    allowNull: false,
+                },
+                guide: {
+                    type: Sequelize.TEXT,
+                    allowNull: false,
+                },
+            },
+            {
+                sequelize,
+                timestamps: false,
+                underscored: false,
+                modelName: "Result",
+                tableName: "Result",
+                paranoid: false,
+            },
+        );
     }
-  );
-};
+}
 
 module.exports = Result;

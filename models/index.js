@@ -1,30 +1,23 @@
 const Sequelize = require("sequelize");
-const env = process.env.NODE_ENV || "development";
+const env = process.env.NODE_ENV || "test";
 const config = require("../config/config.json")[env];
+
+const User = require("./user");
+const Result = require("./result");
+
 const db = {};
-
-let sequelize;
-
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(
+const sequelize = new Sequelize(
     config.database,
     config.username,
     config.password,
-    config
-  );
-}
+    config,
+);
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+db.User = User;
+db.Result = Result;
 
-db.User = require("./user")(sequelize, Sequelize);
-db.Result = require("./result")(sequelize, Sequelize);
-// 추후에 쓰일 예정.
-// db.Log = require("./log")(sequelize, Sequelize);
-
-db.User.belongsTo(db.Result);
-db.Result.hasMany(db.User, { onDelete: "cascade" });
+User.init(sequelize);
+Result.init(sequelize);
 
 module.exports = db;
