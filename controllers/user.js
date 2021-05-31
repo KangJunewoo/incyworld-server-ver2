@@ -97,8 +97,10 @@ const user = {
                 levelNum: req.levelNum,
             };
             return res
-                .status(statusCode.OK)
-                .send(util.success(statusCode.OK, resMessage.SUCCESS, data));
+                .status(statusCode.CREATED)
+                .send(
+                    util.success(statusCode.CREATED, resMessage.SUCCESS, data),
+                );
         } catch (err) {
             console.error(err);
             return res

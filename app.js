@@ -6,9 +6,6 @@ const logger = require("morgan");
 const { sequelize } = require("./models");
 const cors = require("cors");
 
-const schedule = require("node-schedule");
-const daily = require("./modules/daily");
-
 sequelize
     .sync({ force: false })
     .then(() => {
@@ -51,8 +48,5 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render("error");
 });
-
-// daily.sendTrafficEmail();
-// schedule.scheduleJob("00 58 23 * * *", daily.sendTrafficEmail);
 
 module.exports = app;

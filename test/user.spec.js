@@ -240,9 +240,9 @@ describe("getScoreRate", () => {
             dataValues: { count: expect.any(Number) },
         }); // 사람 수를 리턴해야 함.
         await getScoreRate(req, res);
-        expect(res.status).toBeCalledWith(statusCode.OK);
+        expect(res.status).toBeCalledWith(statusCode.CREATED);
         expect(res.send).toBeCalledWith(
-            util.success(statusCode.OK, resMessage.SUCCESS, expectedData),
+            util.success(statusCode.CREATED, resMessage.SUCCESS, expectedData),
         );
     });
 
