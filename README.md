@@ -1,13 +1,15 @@
 # 인-싸이월드 서버 확장판
 
 여기는 인싸이월드 서버 개발자 중 한 명이 개인 연습용으로 이런저런 테스트를 추가한 repo입니다.  
+
 서버 배포용 소스코드는 [오리지날 인싸월 repo](https://github.com/SOPT27-JOB/IN-CYWORLD-SERVER)를 참조해주세요.  
 
 <img style="border: 1px solid black !important; border-radius:20px;" width="250px" src="https://user-images.githubusercontent.com/37949197/99885070-c1412580-2c75-11eb-8ec8-4214faab2acf.png"/>
 <br>
 
-- <b> SOPT 27th 솝커톤
-- 프로젝트 기간: 2020.11.21 ~ 22  
+- **SOPT 27th 솝커톤**
+- 프로젝트 기간: 2020.11.21 ~ 22 + α
+- 배포링크 : https://in-cyworld.vercel.app/
 	
 <br>
 
@@ -189,12 +191,12 @@ $ npm run coverage
 
 
 ## **💁 프로젝트 설명**
-
-코로나보다 무서운 Z세대 밈에 중독된 2020년...
-90년대생들은 순살 당했다는게 무슨 소리인지도 
+### 90년대 감성 테스트
+코로나보다 무서운 Z세대 밈에 중독된 2020년...  
+90년대생들은 순살 당했다는게 무슨 소리인지도   
 모른 채 무시무시한 Z세대 드립에 조롱당하고 있다...
-
-Z세대들, 그대들은 90년대생에 대해 얼마나 알고 있는가?!
+<br/><br/>
+Z세대들, 그대들은 90년대생에 대해 얼마나 알고 있는가?!  
 지금 당장 인-싸이월드 테스트로 그대의 세대 감수성을 시험하라
 
 
@@ -286,3 +288,4 @@ Result.associate(db);
 }
 
 ```
+
