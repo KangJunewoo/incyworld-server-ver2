@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "test": "DB=test PORT=3001 jest --detectOpenHandles --forceExit",
+        "test": "DB=test PORT=3001 jest --verbose --silent --detectOpenHandles --forceExit",
         "coverage": "DB=test PORT=3001 jest --coverage --detectOpenHandles --forceExit",
         "start": "DB=development PORT=3000 nodemon ./bin/www"
     },
