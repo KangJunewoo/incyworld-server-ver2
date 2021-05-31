@@ -1,8 +1,6 @@
-require("jest"); // Intellisense를 위함.
-require("mysql2/node_modules/iconv-lite").encodingExists("utf8mb4"); // jest 테스트 시 인코딩 에러 방지를 위함.
 jest.mock("../models");
 
-const { createUser, getScoreRate } = require("../controllers/user");
+const { createUser, getScoreRate } = require("./user");
 const resMessage = require("../modules/responseMessage");
 const statusCode = require("../modules/statusCode");
 const util = require("../modules/util");

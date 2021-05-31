@@ -2,7 +2,7 @@
  * 15 : sequelize.sync시 에러떴을때
  * 38, 44~ : 쌩뚱맞은 url에 요청날릴 경우
  */
-
+jest.useFakeTimers();
 const req = require("supertest");
 const app = require("../app");
 const statusCode = require("../modules/statusCode");

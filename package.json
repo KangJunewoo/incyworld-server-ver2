@@ -1,10 +1,10 @@
 {
-    "name": "job-server",
+    "name": "incyworld-server-ver2",
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "test": "DB=test PORT=3001 jest --detectOpenHandles --forceExit",
-        "coverage": "DB=test PORT=3001 jest --coverage --detectOpenHandles --forceExit",
+        "test": "DB=test PORT=3001 jest --silent --verbose --detectOpenHandles --forceExit",
+        "coverage": "DB=test PORT=3001 jest --coverage --silent --detectOpenHandles --forceExit",
         "start": "DB=development PORT=3000 nodemon ./bin/www"
     },
     "dependencies": {
@@ -16,7 +16,6 @@
         "express": "~4.16.1",
         "http-errors": "~1.6.3",
         "jade": "^1.9.2",
-        "lodash": "^4.17.21",
         "moment": "^2.29.1",
         "morgan": "~1.9.1",
         "mysql2": "^2.2.5",
