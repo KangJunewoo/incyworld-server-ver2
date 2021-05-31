@@ -10,7 +10,7 @@ const schedule = require("node-schedule");
 const daily = require("./modules/daily");
 
 sequelize
-    .sync({ alter: false })
+    .sync({ force: false })
     .then(() => {
         console.log("DB 연결 성공");
     })
@@ -53,6 +53,6 @@ app.use(function (err, req, res, next) {
 });
 
 // daily.sendTrafficEmail();
-schedule.scheduleJob("00 58 23 * * *", daily.sendTrafficEmail);
+// schedule.scheduleJob("00 58 23 * * *", daily.sendTrafficEmail);
 
 module.exports = app;
