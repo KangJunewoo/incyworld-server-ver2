@@ -2,6 +2,7 @@
  * 15 : sequelize.sync시 에러떴을때
  * 38, 44~ : 쌩뚱맞은 url에 요청날릴 경우
  */
+jest.useFakeTimers(); // 테스트시 시간오류 수정 위해 삽입
 
 const req = require("supertest");
 const app = require("../app");
