@@ -12,8 +12,10 @@
 <br>
 
 ## 책갈피
-* [확장판 - 테스트 도입](#-확장판---테스트-도입)
-* [프로젝트 설명](#-프로젝트-설명)
+### [확장판 - 테스트 도입](#-확장판---테스트-도입)
+### [프로젝트 설명](#-프로젝트-설명)
+
+<br>
 
 ## **📌 확장판 - 테스트 도입**
 ver2로 넘어오면서 각 기능에 대한 테스트를 도입했습니다.
@@ -258,14 +260,6 @@ Result.associate(db);
 
 ```json
 {
-    "name": "incyworld-server-ver2",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "test": "DB=test PORT=3001 jest --silent --verbose --detectOpenHandles --forceExit",
-        "coverage": "DB=test PORT=3001 jest --coverage --silent --detectOpenHandles --forceExit",
-        "start": "DB=development PORT=3000 nodemon ./bin/www"
-    },
     "dependencies": {
         "@types/sequelize": "^4.28.9",
         "cookie-parser": "~1.4.4",
